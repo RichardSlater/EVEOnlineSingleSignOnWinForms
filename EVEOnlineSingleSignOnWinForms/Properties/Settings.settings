@@ -1,7 +1,25 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="EVEOnlineSingleSignOnWinForms.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InternalServerBaseUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://localhost:38163</Value>
+    </Setting>
+    <Setting Name="LoginServerBaseUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://login.eveonline.com/oauth</Value>
+    </Setting>
+    <Setting Name="ClientID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c496b49614054152b2ce02e859714a0e</Value>
+    </Setting>
+    <Setting Name="ClientSecret" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">oGSeVESljDfVwF0ZA3rl252biWKkKOFxbmMGqKYZ</Value>
+    </Setting>
+    <Setting Name="Scopes" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;characterContactsRead&lt;/string&gt;
+  &lt;string&gt;characterContactsWrite&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

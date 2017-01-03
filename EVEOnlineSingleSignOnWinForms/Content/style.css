@@ -1,0 +1,19 @@
+﻿body {
+    background: url(bg.jpeg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+    margin-top: 300px;
+    text-align: center;
+    color: white;
+}
+
+div {
+    background-color: rgba(0,0,0,0.5);
+    padding: 2em;
+    margin: 0;
+}
+
+img {
+    margin-top: 1em;
+}
