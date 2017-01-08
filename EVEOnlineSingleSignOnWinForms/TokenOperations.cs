@@ -23,7 +23,7 @@ namespace EVEOnlineSingleSignOnWinForms {
             GetToken(refreshToken, body);
         }
 
-        private static void GetToken(string code, Dictionary<string, string> body) {
+        private static void GetToken(string authenticationArtifact, Dictionary<string, string> body) {
             var settings = Settings.Default;
             var content = new FormUrlEncodedContent(body);
             var result = settings.LoginServerBaseUrl
@@ -35,11 +35,12 @@ namespace EVEOnlineSingleSignOnWinForms {
 
             var obj = JObject.Parse(result);
             var args = new SignOnCompleteEventArgs {
-                AuthorizationToken = code,
                 AccessToken = obj.SelectToken("access_token").Value<string>(),
                 Expires = obj.SelectToken("expires_in").Value<int>(),
                 RefreshToken = obj.SelectToken("refresh_token").Value<string>()
             };
+
+            if (body["grant_type"] == "authorization_code") args.AuthorizationToken = authenticationArtifact;
 
             GlobalEvents.Complete(null, args);
         }

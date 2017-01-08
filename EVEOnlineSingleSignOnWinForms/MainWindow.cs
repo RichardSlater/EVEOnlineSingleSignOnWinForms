@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows.Forms;
 using EVEOnlineSingleSignOnWinForms.Properties;
 using Flurl;
+using Flurl.Http;
 using Microsoft.Owin.Hosting;
 
 namespace EVEOnlineSingleSignOnWinForms {
@@ -19,14 +20,14 @@ namespace EVEOnlineSingleSignOnWinForms {
             _timer.Tick += ShutdownServer;
             _timer.Interval = 5000;
 
-            GlobalEvents.OnComplete += GlobalEventsOnOnComplete;
+            GlobalEvents.OnComplete += OnComplete;
             var baseUrl = Settings.Default.InternalServerBaseUrl;
             _webServer = WebApp.Start<Startup>(baseUrl);
             var startUrl = baseUrl.AppendPathSegment("start");
             Process.Start(startUrl);
         }
 
-        private void GlobalEventsOnOnComplete(object sender, SignOnCompleteEventArgs signOnCompleteEventArgs) {
+        private void OnComplete(object sender, SignOnCompleteEventArgs signOnCompleteEventArgs) {
             var expiryTime = DateTimeOffset.UtcNow.AddSeconds(signOnCompleteEventArgs.Expires);
             var expiryText = $"{signOnCompleteEventArgs.Expires} seconds (~{expiryTime})";
 
@@ -35,6 +36,8 @@ namespace EVEOnlineSingleSignOnWinForms {
                 AccessTokenText.Text = signOnCompleteEventArgs.AccessToken;
                 RefreshTokenText.Text = signOnCompleteEventArgs.RefreshToken;
                 AccessTokenExpiryText.Text = expiryText;
+                RefreshTokenButton.Enabled = true;
+                GetCharacterButton.Enabled = true;
             };
 
             if (InvokeRequired)
@@ -58,6 +61,21 @@ namespace EVEOnlineSingleSignOnWinForms {
 
         private void RefreshTokenButton_Click(object sender, EventArgs e) {
             TokenOperations.FromRefreshToken(RefreshTokenText.Text);
+        }
+
+        private void GetCharacterButton_Click(object sender, EventArgs e) {
+            var baseUrl = Settings.Default.LoginServerBaseUrl;
+            var character = baseUrl.AppendPathSegment("verify")
+                .WithOAuthBearerToken(AccessTokenText.Text)
+                .GetAsync()
+                .ReceiveJson()
+                .Result;
+            MessageBox.Show($@"Name: {character.CharacterName}
+ID: {character.CharacterID}
+Expiry: {character.ExpiresOn}
+Scopes: {character.Scopes}
+Token Type: {character.TokenType}
+Hash: {character.CharacterOwnerHash}", "Character Results");
         }
     }
 }
