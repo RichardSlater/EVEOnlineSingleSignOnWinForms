@@ -1,19 +1,17 @@
 ﻿body {
     background: url(bg.jpeg);
-    background-size: 100%;
     background-repeat: no-repeat;
+    background-size: 100%;
+    color: white;
     font-family: sans-serif;
     margin-top: 300px;
     text-align: center;
-    color: white;
 }
 
 div {
-    background-color: rgba(0,0,0,0.5);
-    padding: 2em;
+    background-color: rgba(0, 0, 0, 0.5);
     margin: 0;
+    padding: 2em;
 }
 
-img {
-    margin-top: 1em;
-}
+img { margin-top: 1em; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using EVEOnlineSingleSignOnWinForms.Properties;
 using Flurl;
 using Microsoft.Owin.Hosting;
 
@@ -19,7 +20,7 @@ namespace EVEOnlineSingleSignOnWinForms {
             _timer.Interval = 5000;
 
             GlobalEvents.OnComplete += GlobalEventsOnOnComplete;
-            var baseUrl = Properties.Settings.Default.InternalServerBaseUrl;
+            var baseUrl = Settings.Default.InternalServerBaseUrl;
             _webServer = WebApp.Start<Startup>(baseUrl);
             var startUrl = baseUrl.AppendPathSegment("start");
             Process.Start(startUrl);
@@ -53,6 +54,10 @@ namespace EVEOnlineSingleSignOnWinForms {
                 _webServer.Dispose();
                 _webServer = null;
             }
+        }
+
+        private void RefreshTokenButton_Click(object sender, EventArgs e) {
+            TokenOperations.FromRefreshToken(RefreshTokenText.Text);
         }
     }
 }

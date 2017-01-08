@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
@@ -13,17 +9,18 @@ namespace EVEOnlineSingleSignOnWinForms.Extensions {
     public static class OwinExtensions {
         public static IAppBuilder UseStaticContent(this IAppBuilder app) {
             var contentTypes = new Dictionary<string, string> {
-                { ".html", "text/html" },
-                { ".jpeg", "image/jpeg" },
-                { ".png", "image/png" },
-                { ".css", "text/css" }
+                {".html", "text/html"},
+                {".jpeg", "image/jpeg"},
+                {".png", "image/png"},
+                {".css", "text/css"}
             };
 
             // Configure static file hosting
             var options = new FileServerOptions {
                 EnableDefaultFiles = false,
                 EnableDirectoryBrowsing = false,
-                FileSystem = new EmbeddedResourceFileSystem(typeof(Startup).Assembly, "EVEOnlineSingleSignOnWinForms.Content"),
+                FileSystem =
+                    new EmbeddedResourceFileSystem(typeof(Startup).Assembly, "EVEOnlineSingleSignOnWinForms.Content"),
                 StaticFileOptions = {
                     ContentTypeProvider = new FileExtensionContentTypeProvider(contentTypes)
                 }
