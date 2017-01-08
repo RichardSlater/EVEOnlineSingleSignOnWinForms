@@ -26,11 +26,14 @@ namespace EVEOnlineSingleSignOnWinForms {
         }
 
         private void GlobalEventsOnOnComplete(object sender, SignOnCompleteEventArgs signOnCompleteEventArgs) {
+            var expiryTime = DateTimeOffset.UtcNow.AddSeconds(signOnCompleteEventArgs.Expires);
+            var expiryText = $"{signOnCompleteEventArgs.Expires} seconds (~{expiryTime})";
+
             MethodInvoker updateForm = delegate {
                 AuthTokenText.Text = signOnCompleteEventArgs.AuthorizationToken;
                 AccessTokenText.Text = signOnCompleteEventArgs.AccessToken;
                 RefreshTokenText.Text = signOnCompleteEventArgs.RefreshToken;
-                AccessTokenExpiryText.Text = signOnCompleteEventArgs.Expires.ToString();
+                AccessTokenExpiryText.Text = expiryText;
             };
 
             if (InvokeRequired)

@@ -65,7 +65,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(530, 774);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(610, 774);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // RefreshTokenText
@@ -75,7 +75,7 @@
             this.RefreshTokenText.Margin = new System.Windows.Forms.Padding(6);
             this.RefreshTokenText.Multiline = true;
             this.RefreshTokenText.Name = "RefreshTokenText";
-            this.RefreshTokenText.Size = new System.Drawing.Size(518, 176);
+            this.RefreshTokenText.Size = new System.Drawing.Size(598, 176);
             this.RefreshTokenText.TabIndex = 9;
             // 
             // AccessTokenText
@@ -85,7 +85,7 @@
             this.AccessTokenText.Margin = new System.Windows.Forms.Padding(6);
             this.AccessTokenText.Multiline = true;
             this.AccessTokenText.Name = "AccessTokenText";
-            this.AccessTokenText.Size = new System.Drawing.Size(518, 175);
+            this.AccessTokenText.Size = new System.Drawing.Size(598, 175);
             this.AccessTokenText.TabIndex = 8;
             // 
             // label3
@@ -161,14 +161,14 @@
             this.AuthTokenText.Margin = new System.Windows.Forms.Padding(6);
             this.AuthTokenText.Multiline = true;
             this.AuthTokenText.Name = "AuthTokenText";
-            this.AuthTokenText.Size = new System.Drawing.Size(518, 175);
+            this.AuthTokenText.Size = new System.Drawing.Size(598, 175);
             this.AuthTokenText.TabIndex = 7;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 774);
+            this.ClientSize = new System.Drawing.Size(610, 774);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "MainWindow";
             this.Text = "EVE Online SSO Example";
