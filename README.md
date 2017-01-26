@@ -18,4 +18,9 @@ This application demonstrates how to initiate a sign-on and capture authorizatio
  * Client ID and Secret exposed to all users.
   * ... *Mitigation*: None that I can think of.
 
+## Sequence Diagram
+
+![Sequence Diagram][sequence-diagram]
+
    [demo]: content/EVESSO.gif
+   [sequence-diagram]: content/sequence-diagram.png
