@@ -22,7 +22,9 @@ namespace EVEOnlineSingleSignOnWinForms {
 
             GlobalEvents.OnComplete += OnComplete;
             var baseUrl = Settings.Default.InternalServerBaseUrl;
-            _webServer = WebApp.Start<Startup>(baseUrl);
+            if (_webServer == null) {
+                _webServer = WebApp.Start<Startup>(baseUrl);
+            }
             var startUrl = baseUrl.AppendPathSegment("start");
             Process.Start(startUrl);
         }

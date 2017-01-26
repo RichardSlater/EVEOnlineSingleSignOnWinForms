@@ -24,7 +24,7 @@ namespace EVEOnlineSingleSignOnWinForms.Controllers {
         private HttpResponseMessage RedirectTo(string pathSegment) {
             var url = Settings.Default.InternalServerBaseUrl
                 .AppendPathSegment($"{pathSegment}.html");
-            var response = Request.CreateResponse(HttpStatusCode.Moved);
+            var response = Request.CreateResponse(HttpStatusCode.TemporaryRedirect);
             response.Headers.Location = new Uri(url.ToInvariantString());
             return response;
         }
